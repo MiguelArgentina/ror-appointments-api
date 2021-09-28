@@ -12,6 +12,7 @@
 
 ## End points:
 
+<hr>
 
 - `/users`: This is the sign-up enpoint. Must receive a request like:
 ```
@@ -21,6 +22,7 @@ Response:
 ```
 {"message":"Signed up sucessfully."}
 ```
+<hr>
 
 - `/sign_in`: This is the login enpoint. Must receive a request like:
 ```
@@ -46,6 +48,7 @@ Transfer-Encoding: chunked
 
 { message: 'You are logged in. Your token will be valid for one hour after las use. After that you need to sign in again to get a new one.' }, status: :ok
 </pre>
+<hr>
 
 - `/sign_out`: This is the logout enpoint. Must receive a request like:
 ```
@@ -55,6 +58,7 @@ Response:
 ```
 { message: "You are succesfully logged out." }, status: :ok
 ```
+<hr>
 
 - `/providers`: This is the sign-up enpoint. Must receive a request like:
 <pre>
@@ -70,3 +74,4 @@ Response:
  ]"
 }
 </pre>
+<hr>
