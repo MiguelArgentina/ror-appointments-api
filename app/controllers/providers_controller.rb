@@ -12,4 +12,12 @@ class ProvidersController < ApplicationController
   def services_daily
     render json: { message: "services_daily action in providers controller" }
   end
+
+  def provider_available_detail
+    render json: { message: "provider_available action in providers controller" }
+  end
+
+  def every_provider_available
+    render json: { message: "provider_available action in providers controller" }
+  end
 end
