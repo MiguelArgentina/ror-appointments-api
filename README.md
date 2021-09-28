@@ -36,7 +36,7 @@ Visit [Book-Provider-Services API](h#).
 The backend is hosted in Heroku.
 ## Endpoints
 
-[Click here](./endpoints.md)
+[Click here](./wiki/endpoints.md)
 
 
 ## Repository
