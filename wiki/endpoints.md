@@ -46,7 +46,7 @@ X-Request-Id: 498ef50b-4bbb-44b6-9b39-dd45d03aa7b4
 X-Runtime: 0.293374
 Transfer-Encoding: chunked
 
-{ message: 'You are logged in. Your token will be valid for one hour after las use. After that you need to sign in again to get a new one.' }, status: :ok
+{ message: 'You are logged in. Your token will be valid for one hour after last use. After that you need to sign in again to get a new one.' }, status: :ok
 </pre>
 <hr>
 
