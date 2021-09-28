@@ -4,7 +4,7 @@ class Users::SessionsController < Devise::SessionsController
   private
 
   def respond_with(resource, _opts = {})
-    render json: { message: 'You are logged in. Your token will be valid for one hour. After that you need to sign in again to get a new one.' }, status: :ok
+    render json: { message: 'You are logged in. Your token will be valid for one hour after las use. After that you need to sign in again to get a new one.' }, status: :ok
   end
 
   def respond_to_on_destroy
