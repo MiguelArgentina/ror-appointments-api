@@ -16,10 +16,6 @@ This project is created as a challenge for a job offer.
 - Every user has a role: Admin, Client or Provider. By default, the Client role is provided if none specified (view the endpoints details further below)
 - All requests are responded with JSON objects.
 
-Try it, share it with your family and compete against each other!
-
-- Extra feature added: Users scoreboard
-
 
 ## Enhancements To-Do list
 
@@ -32,7 +28,7 @@ Try it, share it with your family and compete against each other!
 
 ## Live link
 
-Visit [Book-Provider-Services API](h#).
+Visit [Book-Provider-Services API](#).
 The backend is hosted in Heroku.
 ## Endpoints
 
@@ -41,7 +37,7 @@ The backend is hosted in Heroku.
 
 ## Repository
 
-- You can find the repo [here](hhttps://github.com/MiguelArgentina/ror-appointments-api).
+- You can find the repo [here](https://github.com/MiguelArgentina/ror-appointments-api).
 
 ## Built With
 
