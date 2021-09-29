@@ -19,8 +19,8 @@ ActiveRecord::Schema.define(version: 2021_09_29_164542) do
     t.bigint "client_id", null: false
     t.bigint "provider_id", null: false
     t.bigint "service_id", null: false
-    t.datetime "start_day"
-    t.datetime "end_day"
+    t.date "start_day"
+    t.date "end_day"
     t.integer "start_hour"
     t.integer "end_hour"
     t.datetime "created_at", precision: 6, null: false
@@ -44,7 +44,7 @@ ActiveRecord::Schema.define(version: 2021_09_29_164542) do
 
   create_table "time_slots", force: :cascade do |t|
     t.bigint "appointment_id", null: false
-    t.datetime "day_booked"
+    t.date "day_booked"
     t.integer "hours", default: [], array: true
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

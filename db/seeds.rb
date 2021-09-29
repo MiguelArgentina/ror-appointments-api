@@ -1,6 +1,5 @@
 require 'faker'
 
-
 #Create users withi provider and client roles
 puts "Creating providers. This requires internet connection for Faker gem..."
 15.times do |index|
@@ -46,4 +45,7 @@ months_ary.each do |month|
   end
 end
 puts "Seeds already planted!"
-
+puts "You can use this user for logging into the system:"
+puts "email:     "
+print User.first.email
+puts "password:  123456"
