@@ -56,8 +56,8 @@ ActiveRecord::Schema.define(version: 2021_09_27_222406) do
   end
 
   create_table "working_hours", force: :cascade do |t|
-    t.datetime "start_hour"
-    t.datetime "end_hour"
+    t.integer "start_hour"
+    t.integer "end_hour"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "provider_id", null: false

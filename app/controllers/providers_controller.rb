@@ -2,7 +2,17 @@ class ProvidersController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    render json: { message: "index action in providers controller" }
+    puts '.....'
+    puts params
+    puts '.....'
+    providers = User.where(role: :provider).all.map{|provider|  
+      {
+        'id': provider.id,
+        'name': provider.email
+      }
+    }
+    render json: { message: "index action in providers controller", 'providers': providers }
+    
   end
 
   def hours_monthly
