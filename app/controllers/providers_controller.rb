@@ -38,7 +38,7 @@ class ProvidersController < ApplicationController
 
      #(2..5).overlaps?(6..7) ranges overlapping
 
-    render json: { message: "you reached /provider_available_detail", "response": { "availability": "#{flag ? "Provider not available" : "Provider available"} on #{date} at #{hour} hs" } }
+    render json: { message: "you reached /provider_available_detail", "response": { "availability": "#{flag ? "Not available. Provider booked" : "Available. Provider free"} on #{date} at #{hour} hs" } }
   end
   
   def every_provider_available
