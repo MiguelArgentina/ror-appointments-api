@@ -61,11 +61,11 @@ Response:
 <hr>
 
 - `/providers`: You can get a list of all available providers. Must receive a request like:
-<pre>
+```
   curl -XGET -H "Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxIiwic2NwIjoidXNlciIsImF1ZCI6bnVsbCwiaWF0IjoxNjIwNDkzOTUzLCJleHAiOjE2MjA0OTc1NTMsImp0aSI6IjlmZjkzMDA2LTAxNTMtNDc5YS1hYjY2LTZiMDBhOWU2NjM1ZCJ9.K6oHIUI0AuZ4HfDV1iElFe9OZoMh_st3l1rfhD0PIqY" -H "Content-Type: application/json" http://localhost:3000/providers
-</pre>
+```
 Response:
-<pre>
+```
 {
   "providers":
 "[
@@ -73,5 +73,34 @@ Response:
   {"id": 2, "name":"Provider 2"}
  ]"
 }
-</pre>
+```
 <hr>
+curl -XPOST -H "Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxIiwic2NwIjoidXNlciIsImF1ZCI6bnVsbCwiaWF0IjoxNjMyOTUyODk0LCJleHAiOjE2MzI5NTY0OTQsImp0aSI6ImUwZjk5NDljLWNjOWQtNDdkZC1hNjVkLTI4MmM5YmJlMGFlMyJ9.9KJ5pMdp-O4Io-EHzt3FV0ebof4k_9WX0xn0S9iSoQM" -d '{ "query": { "provider_id": "1", "date": "24/08/2021", "hour": "15" } }' -H "Content-Type: application/json" http://localhost:3000/provider_available_detail
+<hr>
+
+- `/provider_available_detail`: You can validate if a **provider** is available a certain **date** at a certain **hour**:
+```
+  curl -XPOST -H "Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxIiwic2NwIjoidXNlciIsImF1ZCI6bnVsbCwiaWF0IjoxNjMyOTUyODk0LCJleHAiOjE2MzI5NTY0OTQsImp0aSI6ImUwZjk5NDljLWNjOWQtNDdkZC1hNjVkLTI4MmM5YmJlMGFlMyJ9.9KJ5pMdp-O4Io-EHzt3FV0ebof4k_9WX0xn0S9iSoQM" -d '{ "query": { "provider_id": "1", "date": "24/08/2021", "hour": "15" } }' -H "Content-Type: application/json" http://localhost:3000/provider_available_detail
+```
+Response:
+```
+{
+  "message":"you reached /provider_available_detail",
+  "response":
+              {"availability":"Not available. Provider booked on 24/08/2021 at 19 hs"}
+}
+```
+
+or
+
+```
+{
+  "message":"you reached /provider_available_detail",
+  "response":
+              {"availability":"Available. Provider free on 24/08/2021 at 19 hs"}
+}
+```
+<hr>
+
+
+
