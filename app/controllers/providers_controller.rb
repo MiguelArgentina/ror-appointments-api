@@ -14,27 +14,21 @@ class ProvidersController < ApplicationController
   end
 
   
-  def provider_available_detail
-
-    puts "..............."
-    puts params[:query]
-    puts "..............."
-    puts 
+  def provider_available_detail 
     query_data = params[:query]
     provider_id = query_data[:provider_id]
     date = query_data[:date]
     hour = query_data[:hour]
     
     #slots_occupied = User.find(provider_id).time_slots
+    provider_appointments = Appointment.where(provider_id: provider_id).includes(:time_slots).where(time_slots: { day_booked: date })
     flag = false
-    User.find(Appointment.first.provider_id).time_slots.where(day_booked: date).each do |tslot|
-      flag ||= tslot.hours.include?(hour.to_i)
+    provider_appointments.each do |apptmnt|
+      apptmnt.time_slots.all.each do |tslot|
+        flag ||= tslot.hours.include?(hour.to_i)
+      end
     end
   
-    
-     #prov.time_slots : all time slots
-
-     #prov.time_slots.first.day_booked == Date.parse('24/08/2021'): compare dates
 
      #(2..5).overlaps?(6..7) ranges overlapping
 
