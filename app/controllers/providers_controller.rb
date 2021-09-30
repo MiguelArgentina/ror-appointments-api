@@ -2,15 +2,13 @@ class ProvidersController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    
     providers = User.where(role: :provider).all.map{|provider|  
       {
         'id': provider.id,
-        'name': provider.email
+        'email': provider.email
       }
     }
-    render json: { message: "index action in providers controller", 'providers': providers }
-    
+    render json: { message: "you reached /providers_list", 'providers': providers }
   end
 
   
@@ -36,7 +34,35 @@ class ProvidersController < ApplicationController
   end
   
   def every_provider_available
-    render json: { message: "provider_available action in providers controller" }
+    query_data = params[:query]
+    date = query_data[:date]
+    providers_available = []
+    
+    #slots_occupied = User.find(provider_id).time_slots
+    providers_appointments = Appointment.where(start_day: date).includes(:time_slots)
+    providers_list = providers_appointments.distinct.pluck(:provider_id)
+    providers_list.each do |provdr|
+      time_slots_booked = []
+      prov_id = provdr
+      working_hours_ary = User.find(prov_id).working_hours.pluck(:start_hour, :end_hour)[0]
+      working_hours = (working_hours_ary[0]..working_hours_ary[1]).to_a
+      providers_appointments.where(provider_id: prov_id).each do |app|
+       app.time_slots.each do |ts|
+        time_slots_booked += ts.hours
+       end
+      end
+      if (working_hours - time_slots_booked).empty?
+        providers_available << {"id": prov_id, "available": "not available on #{date}"}
+      else
+        providers_available << {"id": prov_id, "available": "#{working_hours - time_slots_booked} hs on #{date}"}
+      end
+      time_slots_booked = []
+    end
+  
+     #(2..5).overlaps?(6..7) ranges overlapping
+
+    render json: { message: "you reached /every_provider_available", "response": providers_available }
+    
   end
   
   def services_daily

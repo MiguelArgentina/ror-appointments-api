@@ -60,18 +60,19 @@ Response:
 ```
 <hr>
 
-- `/providers`: You can get a list of all available providers. Must receive a request like:
+- `/providers_list`: You can get a list of all available providers. Must receive a request like:
 ```
-  curl -XGET -H "Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxIiwic2NwIjoidXNlciIsImF1ZCI6bnVsbCwiaWF0IjoxNjIwNDkzOTUzLCJleHAiOjE2MjA0OTc1NTMsImp0aSI6IjlmZjkzMDA2LTAxNTMtNDc5YS1hYjY2LTZiMDBhOWU2NjM1ZCJ9.K6oHIUI0AuZ4HfDV1iElFe9OZoMh_st3l1rfhD0PIqY" -H "Content-Type: application/json" http://localhost:3000/providers
+  curl -XGET -H "Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxIiwic2NwIjoidXNlciIsImF1ZCI6bnVsbCwiaWF0IjoxNjIwNDkzOTUzLCJleHAiOjE2MjA0OTc1NTMsImp0aSI6IjlmZjkzMDA2LTAxNTMtNDc5YS1hYjY2LTZiMDBhOWU2NjM1ZCJ9.K6oHIUI0AuZ4HfDV1iElFe9OZoMh_st3l1rfhD0PIqY" -H "Content-Type: application/json" http://localhost:3000/providers_list
 ```
 Response:
 ```
 {
+  "message":"you reached /providers_list",
   "providers":
-"[
-  {"id": 1, "name":"Provider 1"},
-  {"id": 2, "name":"Provider 2"}
- ]"
+  [
+    {"id":1,"email":"lin.hickle@boyle-casper.name"},
+    {"id":2,"email":"donnell.cronin@beahan.org"}
+  ]
 }
 ```
 <hr>
@@ -101,6 +102,26 @@ or
 }
 ```
 <hr>
+
+- `/every_provider_available`: You can get a list of all available **providers** for a certain **date**:
+```
+  curl -XPOST -H "Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxIiwic2NwIjoidXNlciIsImF1ZCI6bnVsbCwiaWF0IjoxNjMyOTUyODk0LCJleHAiOjE2MzI5NTY0OTQsImp0aSI6ImUwZjk5NDljLWNjOWQtNDdkZC1hNjVkLTI4MmM5YmJlMGFlMyJ9.9KJ5pMdp-O4Io-EHzt3FV0ebof4k_9WX0xn0S9iSoQM" -d '{ "query": { "date": "24/08/2021" } }' -H "Content-Type: application/json" http://localhost:3000/every_provider_available
+```
+Response:
+```
+{
+  "message":"you reached /every_provider_available",
+  "response":
+              [
+                {"id":2,"available":"[8, 9, 10] hs on 24/08/2021"},
+                {"id":3,"available":"[8, 9, 15, 16, 17] hs on 24/08/2021"}
+              ]
+}
+```
+
+<hr>
+
+
 
 
 

@@ -5,7 +5,7 @@ Rails.application.routes.draw do
                  registrations: 'users/registrations'
              }
 
-  get '/providers', to: 'providers#index'
+  get '/providers_list', to: 'providers#index'
 
   post '/provider_available_detail', to: 'providers#provider_available_detail'
   post '/every_provider_available', to: 'providers#every_provider_available'
