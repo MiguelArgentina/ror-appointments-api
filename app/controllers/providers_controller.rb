@@ -89,11 +89,10 @@ class ProvidersController < ApplicationController
     query_data = params[:query]
     provider_id = query_data[:provider_id]
     year = query_data[:year]
-    month = query_data[:month]
     report_hash = []
     begin
       
-      provider_appointments = Appointment.where(provider_id: 6).where("(EXTRACT(YEAR FROM start_day))::integer = ?", 2021).where("(EXTRACT(MONTH FROM start_day))::integer = ?", 2).order("start_day DESC").includes(:time_slots).includes(:service)
+      provider_appointments = Appointment.where(provider_id: provider_id).where("(EXTRACT(YEAR FROM start_day))::integer = ?", year).order("start_day DESC").includes(:time_slots).includes(:service)
 
 
       provider_appointments.each do |apptmnt|

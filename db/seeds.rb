@@ -54,3 +54,7 @@ puts "You can use this user for logging into the system:"
 print  "email: "
 puts User.first.email
 puts "password:  123456"
+
+  #curl -XPOST -i -H "Content-Type: application/json" -d '{ "user": { "email": "mail@mail.com", "password": "123456" } }' https://tucu-appointments-restful-api.herokuapp.com/users/sign_in
+
+
