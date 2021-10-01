@@ -2,8 +2,6 @@ class ProvidersController < ApplicationController
 
   before_action :authenticate_user!
 
-   
-
   def index
     begin
       providers = User.where(role: :provider).all.map{|provider|  
@@ -18,6 +16,22 @@ class ProvidersController < ApplicationController
     end
   end
 
+  def provider_working_hours
+    query_data = params[:query]
+    provider_id = query_data[:provider_id]
+    working_hours = {}
+    begin
+      working_hours = User.find(provider_id).working_hours.map{|work_hour|  
+        {
+          'open': "#{work_hour.start_hour} hs",
+          'close': "#{work_hour.end_hour} hs"
+        }
+      }
+      render json: { message: "you reached /provider_working_hours", provider_id: provider_id,working_hours: working_hours }
+    rescue => e
+      handle_error_method(e)
+    end
+  end
   
   def provider_available_detail 
     query_data = params[:query]
