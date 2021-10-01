@@ -172,9 +172,9 @@ Response:
 
 <hr>
 
-- `/provider_services_daily`: You can get a report with a provider's daily **services** within a **month**, for a certain **year**, ordered descending by hour and day:
+- `/provider_services_daily`: You can get a report with a provider's daily **services** within a **year** ordered descending by hour and day:
 ```
-  curl -XPOST -H "Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxIiwic2NwIjoidXNlciIsImF1ZCI6bnVsbCwiaWF0IjoxNjMzMDI3MzIzLCJleHAiOjE2MzMwMzA5MjMsImp0aSI6IjdlZjZkNjlkLWE3YzAtNGJlZC04ZjVjLTA1OGQzYTJlODdhMyJ9.KvVz525gEBWfYNS43vBy_gcVHSh6KDjhd1rdRjKv3Ug" -d '{ "query": { "provider_id": "3", "year": "2021", "month": "8" } }' -H "Content-Type: application/json" http://localhost:3000/provider_services_daily
+  curl -XPOST -H "Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxIiwic2NwIjoidXNlciIsImF1ZCI6bnVsbCwiaWF0IjoxNjMzMDI3MzIzLCJleHAiOjE2MzMwMzA5MjMsImp0aSI6IjdlZjZkNjlkLWE3YzAtNGJlZC04ZjVjLTA1OGQzYTJlODdhMyJ9.KvVz525gEBWfYNS43vBy_gcVHSh6KDjhd1rdRjKv3Ug" -d '{ "query": { "provider_id": "3", "year": "2021" } }' -H "Content-Type: application/json" http://localhost:3000/provider_services_daily
 ```
 Response:
 ```
