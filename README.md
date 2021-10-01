@@ -26,8 +26,9 @@ This project is created as a challenge for a job offer.
 
 ## Live link
 
-Visit [Book-Provider-Services API](#).
+Refer to the endpoints section where you will get the base URL for testing the API.
 The backend is hosted in Heroku.
+
 ## Endpoints
 
 [Click here](./wiki/endpoints.md)
