@@ -33,6 +33,10 @@ The backend is hosted on Heroku.
 
 [Click here](./wiki/endpoints.md)
 
+## DB diagram
+
+![](db_schema.png)
+
 
 ## Repository
 
