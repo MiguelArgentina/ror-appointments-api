@@ -76,7 +76,43 @@ Response:
 }
 ```
 <hr>
-curl -XPOST -H "Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxIiwic2NwIjoidXNlciIsImF1ZCI6bnVsbCwiaWF0IjoxNjMyOTUyODk0LCJleHAiOjE2MzI5NTY0OTQsImp0aSI6ImUwZjk5NDljLWNjOWQtNDdkZC1hNjVkLTI4MmM5YmJlMGFlMyJ9.9KJ5pMdp-O4Io-EHzt3FV0ebof4k_9WX0xn0S9iSoQM" -d '{ "query": { "provider_id": "1", "date": "24/08/2021", "hour": "15" } }' -H "Content-Type: application/json" http://localhost:3000/provider_available_detail
+
+- `/list_services`: You can get a list of all available services. Must receive a request like:
+```
+  curl -XGET -H "Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxIiwic2NwIjoidXNlciIsImF1ZCI6bnVsbCwiaWF0IjoxNjIwNDkzOTUzLCJleHAiOjE2MjA0OTc1NTMsImp0aSI6IjlmZjkzMDA2LTAxNTMtNDc5YS1hYjY2LTZiMDBhOWU2NjM1ZCJ9.K6oHIUI0AuZ4HfDV1iElFe9OZoMh_st3l1rfhD0PIqY" -H "Content-Type: application/json" http://localhost:3000/list_services
+```
+Response:
+```
+{
+  "message":"you reached /list_services",
+  "response":
+            {"services_list":
+                            [
+                              {"id":1,"name":"Manufacturing"},
+                              {"id":2,"name":"Design"}
+                            ]
+            }
+}
+```
+<hr>
+
+- `/provider_working_hours`: You can get the regular opening and closing hours of a provider.
+<BR>
+  _**NOTE**: You can book services outside the regular working hours but charges will be different._
+
+```
+  curl -XPOST -H "Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxIiwic2NwIjoidXNlciIsImF1ZCI6bnVsbCwiaWF0IjoxNjIwNDkzOTUzLCJleHAiOjE2MjA0OTc1NTMsImp0aSI6IjlmZjkzMDA2LTAxNTMtNDc5YS1hYjY2LTZiMDBhOWU2NjM1ZCJ9.K6oHIUI0AuZ4HfDV1iElFe9OZoMh_st3l1rfhD0PIqY" -d '{ "query": { "provider_id": "1" } }' -H "Content-Type: application/json" http://localhost:3000/provider_working_hours
+```
+Response:
+```
+{"message":"you reached /provider_working_hours",
+"provider_id":"1",
+"working_hours":
+                [
+                  {"open":"9 hs","close":"18 hs"}
+                ]
+}
+```
 <hr>
 
 - `/provider_available_detail`: You can validate if a **provider** is available a certain **date** at a certain **hour**:
@@ -142,6 +178,20 @@ Response:
                   {"date":"2021-02-15","hours":[13,12],"service":"Healthcare"}
                 ] 
               }
+}
+```
+<hr>
+
+- `/book_new_service`: You can book an appointment with a provider specifying the date and the beginning and ending hour of the day you need the service:
+```
+  curl -XPOST  -H "Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxIiwic2NwIjoidXNlciIsImF1ZCI6bnVsbCwiaWF0IjoxNjMzMDI3MzIzLCJleHAiOjE2MzMwMzA5MjMsImp0aSI6IjdlZjZkNjlkLWE3YzAtNGJlZC04ZjVjLTA1OGQzYTJlODdhMyJ9.KvVz525gEBWfYNS43vBy_gcVHSh6KDjhd1rdRjKv3Ug" -d '{ "query": { "client_id": "14", "provider_id": "4", "service_id": "3", "start_day": "13/01/1981", "start_hour": "14", "end_hour": "16" } }' -H "Content-Type: application/json" http://localhost:3000/book_new_service
+```
+Response:
+```
+{
+  "message":"you reached /book_new_service",
+  "status":"service booked succesfully",
+  "service_data":"prov_id: 4, service: 3, date:13/01/1981, from 14 hs to 16 hs"
 }
 ```
 

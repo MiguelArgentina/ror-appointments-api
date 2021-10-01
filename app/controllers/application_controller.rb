@@ -1,7 +1,8 @@
 class ApplicationController < ActionController::API
   before_action :configure_permitted_parameters, if: :devise_controller?
+  
 
-  rescue_from ActionController::RoutingError, :with => :error_render_method
+  rescue_from ActionController::RoutingError, :with => :route_not_found
   rescue_from ActiveRecord::RecordNotUnique, with: :record_not_unique
   rescue_from AbstractController::ActionNotFound, with: :record_not_unique
   
@@ -12,9 +13,9 @@ class ApplicationController < ActionController::API
 
   private
 
-    def record_not_unique
-      render json: { error: "The email you are trying to register already exists on our database. Please contact miguelgomez66@gmail.com", status: 409 }
-    end
+  def record_not_unique
+    render json: { error: "The email you are trying to register already exists on our database. Please contact miguelgomez66@gmail.com", status: 409 }
+  end
 
 
   protected

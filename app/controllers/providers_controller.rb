@@ -39,7 +39,6 @@ class ProvidersController < ApplicationController
     date = query_data[:date]
     hour = query_data[:hour]
     
-    #slots_occupied = User.find(provider_id).time_slots
     begin
       provider_appointments = Appointment.where(provider_id: provider_id).includes(:time_slots).where(time_slots: { day_booked: date })
       flag = false
@@ -48,8 +47,6 @@ class ProvidersController < ApplicationController
           flag ||= tslot.hours.include?(hour.to_i)
         end
       end
-    
-      #(2..5).overlaps?(6..7) ranges overlapping
 
       render json: { message: "you reached /provider_available_detail", "response": { "availability": "#{flag ? "Not available. Provider booked" : "Available. Provider free"} on #{date} at #{hour} hs" } }
     rescue => e

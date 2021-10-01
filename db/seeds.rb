@@ -54,5 +54,3 @@ puts "You can use this user for logging into the system:"
 print  "email: "
 puts User.first.email
 puts "password:  123456"
-
-
