@@ -9,8 +9,8 @@ Rails.application.routes.draw do
 
   post '/provider_available_detail', to: 'providers#provider_available_detail'
   post '/every_provider_available', to: 'providers#every_provider_available'
-  post '/providers_services_daily', to: 'providers#services_daily'
-  post '/providers_hours_monthly', to: 'providers#hours_monthly'
+  post '/provider_services_daily', to: 'providers#provider_services_daily'
+  post '/providers_hours_monthly', to: 'providers#providers_hours_monthly'
 
   post '/new_service', to: 'appointments#new_service'
 

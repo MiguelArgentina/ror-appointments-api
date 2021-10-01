@@ -5,6 +5,7 @@ class ApplicationController < ActionController::API
   rescue_from ActiveRecord::RecordNotUnique, with: :record_not_unique
   rescue_from AbstractController::ActionNotFound, with: :record_not_unique
   
+
   def route_not_found
     render json: { error: "Please verify the enpoint and the method. It wasn´t found in our service."}, status: :not_found
   end

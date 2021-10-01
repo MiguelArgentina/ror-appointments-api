@@ -1,6 +1,11 @@
 require 'faker'
 
-#Create users withi provider and client roles
+puts "Creating a generic user with provider role"
+User.create(email: "mail@mail.com",
+              password: '123456',
+              role: :provider)
+
+#Create users with provider and client roles
 puts "Creating providers. This requires internet connection for Faker gem..."
 15.times do |index|
   User.create(email: Faker::Internet.unique.email,
@@ -46,6 +51,8 @@ months_ary.each do |month|
 end
 puts "Seeds already planted!"
 puts "You can use this user for logging into the system:"
-puts "email:     "
-print User.first.email
+print  "email: "
+puts User.first.email
 puts "password:  123456"
+
+

@@ -121,6 +121,46 @@ Response:
 
 <hr>
 
+- `/provider_services_daily`: You can get a report with a provider's daily **services** within a **month**, for a certain **year**, ordered descending by hour and day:
+```
+  curl -XPOST -H "Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxIiwic2NwIjoidXNlciIsImF1ZCI6bnVsbCwiaWF0IjoxNjMzMDI3MzIzLCJleHAiOjE2MzMwMzA5MjMsImp0aSI6IjdlZjZkNjlkLWE3YzAtNGJlZC04ZjVjLTA1OGQzYTJlODdhMyJ9.KvVz525gEBWfYNS43vBy_gcVHSh6KDjhd1rdRjKv3Ug" -d '{ "query": { "provider_id": "3", "year": "2021", "month": "8" } }' -H "Content-Type: application/json" http://localhost:3000/provider_services_daily
+```
+Response:
+```
+{
+  "message":"you reached /provider_services_daily",
+  "response":
+              { "provider_id":"6",
+                "accum_hours_report":
+                [
+                  {"date":"2021-02-24","hours":[14,13],"service":"Retail"},
+                  {"date":"2021-02-23","hours":[10,9],"service":"IT"},
+                  {"date":"2021-02-21","hours":[10],"service":"Retail"},
+                  {"date":"2021-02-16","hours":[13],"service":"Technology"},
+                  {"date":"2021-02-15","hours":[19,18,17],"service":"IT"},
+                  {"date":"2021-02-15","hours":[13,12,11,10],"service":"Construction"},
+                  {"date":"2021-02-15","hours":[13,12],"service":"Healthcare"}
+                ] 
+              }
+}
+```
+
+<hr>
+
+- `/providers_hours_monthly`: You can get a report of how many **hours** booked, for a certain **month**,  a **provider** has:
+```
+  curl -XPOST -H "Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxIiwic2NwIjoidXNlciIsImF1ZCI6bnVsbCwiaWF0IjoxNjMzMDI3MzIzLCJleHAiOjE2MzMwMzA5MjMsImp0aSI6IjdlZjZkNjlkLWE3YzAtNGJlZC04ZjVjLTA1OGQzYTJlODdhMyJ9.KvVz525gEBWfYNS43vBy_gcVHSh6KDjhd1rdRjKv3Ug" -d '{ "query": { "provider_id": "3", "year": "2021", "month": "8" } }' -H "Content-Type: application/json" http://localhost:3000/providers_hours_monthly
+```
+Response:
+```
+{
+  "message":"you reached /providers_hours_monthly",
+  "response":
+              {"accum_hours_report":"for month 7/2021 provider id:3 has 0 booked hours."}
+}
+```
+
+<hr>
 
 
 
