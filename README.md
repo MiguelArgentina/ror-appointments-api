@@ -9,10 +9,10 @@ This project is created as a challenge for a job offer.
 
 ## Features
 
-- This service lets clientes book appointments with providers
+- This service lets clients book appointments with providers
 - The service requires you signup with a username and password for security
 - After singning-in, you get a JWT token, which you must include in every request, if not, the service considers the request invalid.
-- The JWT token is valid for an hour after the last usage
+- The JWT token is valid for an hour
 - Every user has a role: Admin, Client or Provider. By default, the Client role is provided if none specified (view the endpoints details further below)
 - All requests are responded with JSON objects.
 
@@ -22,9 +22,7 @@ This project is created as a challenge for a job offer.
 - UI for admin staff
 - Variety of reports
 - Recover password
-- 
-- 
--
+- Booking appointments for a range of days (as of now, users can only book appointments for one day)
 
 ## Live link
 

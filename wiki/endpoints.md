@@ -4,12 +4,27 @@
 
 ### - After signing-in with a valid user, you will get a **Bearer token** in the  **Authorization** header of the response. Save this token for this will be required for every request you make.
 
-### - The token expires after one hour of inactivity.
+### - The token expires after one hour.
 
-### - You can get a new onesigning-in again.
+### - You can get a new one signing-in again.
 
 <br>
 
+## Base URL:
+  <br>
+- In a local environment, by default rails server listens to:
+  <br>
+  <br>
+
+  ```http://localhost:3000```
+
+ <br>- For the live-demo, you should use:
+  <br>
+  <br>
+
+```https://tucu-appointments-restful-api.herokuapp.com/```
+<br>
+<br>
 ## End points:
 
 <hr>
