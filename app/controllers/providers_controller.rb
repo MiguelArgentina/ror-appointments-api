@@ -17,7 +17,7 @@ class ProvidersController < ApplicationController
   end
 
   def provider_working_hours
-    query_data = params[:query]
+    query_data = query_params
     provider_id = query_data[:provider_id]
     working_hours = {}
     begin
@@ -34,7 +34,7 @@ class ProvidersController < ApplicationController
   end
   
   def provider_available_detail 
-    query_data = params[:query]
+    query_data = query_params
     provider_id = query_data[:provider_id]
     date = query_data[:date]
     hour = query_data[:hour]
@@ -55,7 +55,7 @@ class ProvidersController < ApplicationController
   end
   
   def every_provider_available
-    query_data = params[:query]
+    query_data = query_params
     date = query_data[:date]
     providers_available = []
     begin
@@ -86,7 +86,7 @@ class ProvidersController < ApplicationController
   end
   
   def provider_services_daily
-    query_data = params[:query]
+    query_data = query_params
     provider_id = query_data[:provider_id]
     year = query_data[:year]
     report_hash = []
@@ -112,7 +112,7 @@ class ProvidersController < ApplicationController
   end
   
   def providers_hours_monthly
-    query_data = params[:query]
+    query_data = query_params
     provider_id = query_data[:provider_id]
     year = query_data[:year]
     month = query_data[:month]
@@ -137,5 +137,9 @@ class ProvidersController < ApplicationController
     render json: { error: "#{exception.class}: #{exception.message}"}, status: :not_found
   end
 
+  private 
+  def query_params
+      params.require(:query).permit(:provider_id, :year, :month, :date, :hour)
+  end
 
 end

@@ -2,7 +2,7 @@ class AppointmentsController < ApplicationController
   #before_action :authenticate_user!
 
   def book_new_service
-    query_data = params[:query]
+    query_data = query_params
     client_id = query_data[:client_id]
     provider_id = query_data[:provider_id]
     service_id = query_data[:service_id]
@@ -28,5 +28,11 @@ class AppointmentsController < ApplicationController
   def handle_error_method(exception)
     render json: { error: "#{exception.class}: #{exception.message}"}, status: :not_found
   end
+
+  private 
+  def query_params
+      params.require(:query).permit(:client_id, :provider_id, :service_id, :start_day, :start_hour, :end_hour)
+  end
+
 end
 
